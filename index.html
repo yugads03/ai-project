@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Smart Military Path Planner</title>
+ <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <h1 class="title">Smart Military Path Planner</h1>
+ <p class="subtitle">
+   Plan optimal navigation using A* heuristic with terrain-based movement cost
+ </p>
+
+
+ <div class="container">
+   <!-- Controls -->
+   <div class="controls">
+     <label>Grid Size:</label>
+     <label for="gridSize"></label><select id="gridSize">
+       <option selected>10</option>
+       <option>15</option>
+       <option>20</option>
+     </select>
+
+
+     <label>Paint Mode:</label>
+     <label for="paintMode"></label><select id="paintMode">
+       <option value="terrain" selected>Terrain</option>
+       <option value="start">Start</option>
+       <option value="goal">Goal</option>
+       <option value="erase">Erase</option>
+     </select>
+
+
+     <label>Terrain Type:</label>
+     <label for="terrainType"></label><select id="terrainType">
+       <option value="road">Road (Cost 1)</option>
+       <option value="grass" selected>Grass (Cost 2)</option>
+       <option value="forest">Forest (Cost 4)</option>
+       <option value="mountain">Mountain (Cost 7)</option>
+       <option value="water">Water (Blocked)</option>
+     </select>
+
+
+     <div class="buttons">
+       <button id="clearBtn">Clear</button>
+       <button id="findBtn" class="highlight">Find Path</button>
+       <button id="exportBtn">Export Map</button>
+       <button id="importBtn">Import Map</button>
+       <input type="file" id="importFile" accept=".json" hidden />
+     </div>
+   </div>
+
+
+   <!-- Grid -->
+   <div id="grid" class="grid"></div>
+
+
+   <!-- Legend -->
+   <div class="legend">
+     <h3>Legend</h3>
+     <ul>
+       <li><span class="cell road"></span> Road (Cost 1)</li>
+       <li><span class="cell grass"></span> Grass (Cost 2)</li>
+       <li><span class="cell forest"></span> Forest (Cost 4)</li>
+       <li><span class="cell mountain"></span> Mountain (Cost 7)</li>
+       <li><span class="cell water"></span> Water (Blocked)</li>
+       <li><span class="cell start"></span> Start</li>
+       <li><span class="cell goal"></span> Goal</li>
+       <li><span class="cell path"></span> Path Result</li>
+     </ul>
+   </div>
+ </div>
+
+
+ <!-- Status/Explanation -->
+ <div class="explain-box">
+   <h3>Status / Explanation</h3>
+   <pre id="explain">Awaiting user input...</pre>
+ </div>
+
+
+ <script src="app.js"></script>
+</body>
+</html>
